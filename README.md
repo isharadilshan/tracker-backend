@@ -8,7 +8,7 @@ Clone the repo:
 
 ```bash
 git clone https://github.com/isharadilshan/tracker-backend.git
-cd cd tracker-backend
+cd tracker-backend
 ```
 
 Install the dependencies:
@@ -94,8 +94,8 @@ CREDENTIALS = # default set to true
 
 ## CI / CD
 
-- App hosted on digital ocean cloud provider []
-- Static code analyzer [SonarQube] setup with github actions [http://167.71.205.129:9000/dashboard?id=backend] use credentials [username: `admin`] and [password: `PHpid_75`]
+- App hosted on digital ocean cloud provider [http://143.198.206.156:3001/]
+- Static code analyzer [SonarQube] setup with github actions [http://167.71.205.129:9000/dashboard?id=tracker-backend] use credentials [username: `admin`] and [password: `PHpid_75`]
 
 ## Project Structure
 
@@ -135,24 +135,24 @@ List of available routes:
 **Auth routes**:\
 `POST api/v1/auth/signup` - Signup\
 `POST api/v1/auth/signin` - Signin\
-`POST api/v1/auth/logout` - Logout\
+`POST api/v1/auth/logout` - Logout
 
 **Expense routes**:\
 `POST /expenses` - Create a expense\
 `GET /expenses` - Get all expenses\
 `GET /expenses/id` - Get expense by id\
 `PUT /expenses/id` - Update expense by id\
-`DELETE /expenses/id` - Delete expense by id\
+`DELETE /expenses/id` - Delete expense by id
 
 **ToDo routes**:\
 `POST /expenses` - Create a todo\
 `GET /expenses` - Get all todos\
 `GET /expenses/id` - Get todo by id\
 `PUT /expenses/id` - Update todo by id\
-`DELETE /expenses/id` - Delete todo by id\
+`DELETE /expenses/id` - Delete todo by id
 
 **Swagger Documentation**:\
-`GET /api-docs` - Swagger documentation\
+`GET /api-docs` - Swagger documentation
 
 ## License
 
