@@ -7,11 +7,13 @@ import { CreateExpenseDto } from '@/dtos/expenses.dto';
 class ExpenseService {
   public expenses = expenseModel;
 
+  //service call to retrieve all expense from database
   public async findAllExpenses(): Promise<Expense[]> {
     const users: Expense[] = await this.expenses.find();
     return users;
   }
 
+  //service call to retrieve expense by id from database
   public async findExpenseById(expenseId: string): Promise<Expense> {
     if (isEmpty(expenseId)) throw new HttpException(400, 'Expense ID is empty');
 
@@ -21,6 +23,7 @@ class ExpenseService {
     return findExpense;
   }
 
+  //service call to create new expense on database
   public async createExpense(expenseData: CreateExpenseDto): Promise<Expense> {
     if (isEmpty(expenseData)) throw new HttpException(400, 'Expense Data is empty');
 
@@ -29,6 +32,7 @@ class ExpenseService {
     return createExpenseData;
   }
 
+  //service call to update existing expense on database
   public async updateExpense(expenseId: string, expenseData: CreateExpenseDto): Promise<Expense> {
     if (isEmpty(expenseData)) throw new HttpException(400, 'Expense Data is empty');
 
@@ -38,6 +42,7 @@ class ExpenseService {
     return updateExpenseById;
   }
 
+  //service call to delete existing expense on database
   public async deleteExpense(expenseId: string): Promise<Expense> {
     const deleteExpenseById: Expense = await this.expenses.findByIdAndDelete(expenseId);
     if (!deleteExpenseById) throw new HttpException(409, "Expense doesn't exist");

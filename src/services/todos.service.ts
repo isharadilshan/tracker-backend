@@ -7,11 +7,13 @@ import { CreateTodoDto } from '@/dtos/todos.dto';
 class TodoService {
   public todos = todoModel;
 
+  //service call to retrieve all todos from database
   public async findAllTodos(): Promise<ToDo[]> {
     const todos: ToDo[] = await this.todos.find();
     return todos;
   }
 
+  //service call to retrieve todo by id from database
   public async findTodoById(todoId: string): Promise<ToDo> {
     if (isEmpty(todoId)) throw new HttpException(400, 'ToDo ID is empty');
 
@@ -21,6 +23,7 @@ class TodoService {
     return findToDo;
   }
 
+  //service call to create new todo on database
   public async createTodo(todoData: CreateTodoDto): Promise<ToDo> {
     if (isEmpty(todoData)) throw new HttpException(400, 'ToDo Data is empty');
 
@@ -29,6 +32,7 @@ class TodoService {
     return createTodoData;
   }
 
+  //service call to update existing todo on database
   public async updateTodo(todoId: string, todoData: CreateTodoDto): Promise<ToDo> {
     if (isEmpty(todoData)) throw new HttpException(400, 'ToDo Data is empty');
 
@@ -38,6 +42,7 @@ class TodoService {
     return updateTodoById;
   }
 
+  //service call to delete existing todo on database
   public async deleteTodo(todoId: string): Promise<ToDo> {
     const deleteTodoById: ToDo = await this.todos.findByIdAndDelete(todoId);
     if (!deleteTodoById) throw new HttpException(409, "ToDo doesn't exist");

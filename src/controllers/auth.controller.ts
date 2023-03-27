@@ -7,6 +7,7 @@ import AuthService from '@services/auth.service';
 class AuthController {
   public authService = new AuthService();
 
+  //handles incoming signup request and map with proper response
   public signUp = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const userData: CreateUserDto = req.body;
@@ -18,6 +19,7 @@ class AuthController {
     }
   };
 
+  //handles incoming login request and map with proper response
   public logIn = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const userData: CreateUserDto = req.body;
@@ -30,6 +32,7 @@ class AuthController {
     }
   };
 
+  //handles incoming logout request and map with proper response
   public logOut = async (req: RequestWithUser, res: Response, next: NextFunction) => {
     try {
       const userData: User = req.user;

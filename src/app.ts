@@ -35,7 +35,7 @@ class App {
     this.app.listen(this.port, () => {
       logger.info(`=================================`);
       logger.info(`======= ENV: ${this.env} =======`);
-      logger.info(`🚀 App listening on the port ${this.port}`);
+      logger.info(`App listening on the port ${this.port}`);
       logger.info(`=================================`);
     });
   }
@@ -44,14 +44,16 @@ class App {
     return this.app;
   }
 
+  //database connection
   private connectToDatabase() {
     if (this.env !== 'production') {
       set('debug', true);
     }
 
-    connect(dbConnection.url, dbConnection.options);
+    connect(dbConnection.url);
   }
 
+  //middleware methods
   private initializeMiddlewares() {
     this.app.use(morgan(LOG_FORMAT, { stream }));
     this.app.use(cors({ origin: ORIGIN, credentials: CREDENTIALS }));
@@ -63,12 +65,14 @@ class App {
     this.app.use(cookieParser());
   }
 
+  //api routes
   private initializeRoutes(routes: Routes[]) {
     routes.forEach(route => {
       this.app.use('/', route.router);
     });
   }
 
+  //swagger doc endpoint
   private initializeSwagger() {
     const options = {
       swaggerDefinition: {

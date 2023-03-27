@@ -6,6 +6,7 @@ import { CreateExpenseDto } from '@/dtos/expenses.dto';
 class ExpensesController {
   public expenseService = new ExpenseService();
 
+  //handles incoming get expense request and map with proper response
   public getExpenses = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const findAllExpensesData: Expense[] = await this.expenseService.findAllExpenses();
@@ -16,6 +17,7 @@ class ExpensesController {
     }
   };
 
+  //handles incoming get expense by id request and map with proper response
   public getExpenseById = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const expenseId: string = req.params.id;
@@ -27,6 +29,7 @@ class ExpensesController {
     }
   };
 
+  //handles incoming create expense request and map with proper response
   public createExpense = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const expenseData: CreateExpenseDto = req.body;
@@ -38,6 +41,7 @@ class ExpensesController {
     }
   };
 
+  //handles incoming update expense request and map with proper response
   public updateExpense = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const expenseId: string = req.params.id;
@@ -50,6 +54,7 @@ class ExpensesController {
     }
   };
 
+  //handles incoming delete expense request and map with proper response
   public deleteExpense = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const expenseId: string = req.params.id;

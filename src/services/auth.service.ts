@@ -11,6 +11,7 @@ import { isEmpty } from '@utils/util';
 class AuthService {
   public users = userModel;
 
+  //service call to signup user
   public async signup(userData: CreateUserDto): Promise<User> {
     if (isEmpty(userData)) throw new HttpException(400, 'userData is empty');
 
@@ -23,6 +24,7 @@ class AuthService {
     return createUserData;
   }
 
+  //service call to login user
   public async login(userData: CreateUserDto): Promise<{ cookie: string; findUser: User }> {
     if (isEmpty(userData)) throw new HttpException(400, 'userData is empty');
 
@@ -38,6 +40,7 @@ class AuthService {
     return { cookie, findUser };
   }
 
+  //service call to logout user
   public async logout(userData: User): Promise<User> {
     if (isEmpty(userData)) throw new HttpException(400, 'userData is empty');
 
@@ -47,6 +50,7 @@ class AuthService {
     return findUser;
   }
 
+  //service call to create authenticaton token
   public createToken(user: User): TokenData {
     const dataStoredInToken: DataStoredInToken = { _id: user._id };
     const secretKey: string = SECRET_KEY;
@@ -55,6 +59,7 @@ class AuthService {
     return { expiresIn, token: sign(dataStoredInToken, secretKey, { expiresIn }) };
   }
 
+  //service call to create cookie
   public createCookie(tokenData: TokenData): string {
     return `Authorization=${tokenData.token}; HttpOnly; Max-Age=${tokenData.expiresIn};`;
   }
