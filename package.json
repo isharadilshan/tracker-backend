@@ -1,9 +1,9 @@
 {
   "name": "tracker-backend",
-  "version": "0.0.0",
-  "description": "TypeScript + Mongoose + MongoDB + Express API Server",
-  "author": "",
-  "license": "ISC",
+  "version": "1.0.0",
+  "description": "Expense Tracker NodeJs Backend",
+  "author": "Ishara Dilshan",
+  "license": "MIT",
   "scripts": {
     "start": "npm run build && cross-env NODE_ENV=production node dist/server.js",
     "dev": "cross-env NODE_ENV=development nodemon",

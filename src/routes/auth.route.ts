@@ -5,6 +5,7 @@ import { Routes } from '@interfaces/routes.interface';
 import authMiddleware from '@middlewares/auth.middleware';
 import validationMiddleware from '@middlewares/validation.middleware';
 
+//all auth routes
 class AuthRoute implements Routes {
   public path = '/';
   public router = Router();

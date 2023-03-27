@@ -4,6 +4,7 @@ import validationMiddleware from '@middlewares/validation.middleware';
 import ExpensesController from '@/controllers/expenses.controller';
 import { CreateExpenseDto } from '@/dtos/expenses.dto';
 
+//all expense routes
 class ExpensesRoute implements Routes {
   public path = '/expenses';
   public router = Router();

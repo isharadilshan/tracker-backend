@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from 'express';
 import { HttpException } from '@exceptions/HttpException';
 import { logger } from '@utils/logger';
 
+//error middleware to log errors
 const errorMiddleware = (error: HttpException, req: Request, res: Response, next: NextFunction) => {
   try {
     const status: number = error.status || 500;

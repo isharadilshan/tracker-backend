@@ -6,6 +6,7 @@ import { CreateTodoDto } from '@/dtos/todos.dto';
 class TodosController {
   public todoService = new TodoService();
 
+  //handles incoming get todo request and map with proper response
   public getTodos = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const findAllTodosData: ToDo[] = await this.todoService.findAllTodos();
@@ -16,6 +17,7 @@ class TodosController {
     }
   };
 
+  //handles incoming get todo by id request and map with proper response
   public getTodoById = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const todoId: string = req.params.id;
@@ -27,6 +29,7 @@ class TodosController {
     }
   };
 
+  //handles incoming create todo  request and map with proper response
   public createTodo = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const todoData: CreateTodoDto = req.body;
@@ -38,6 +41,7 @@ class TodosController {
     }
   };
 
+  //handles incoming update todo request and map with proper response
   public updateTodo = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const todoId: string = req.params.id;
@@ -50,6 +54,7 @@ class TodosController {
     }
   };
 
+  //handles incoming delete todo request and map with proper response
   public deleteTodo = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const todoId: string = req.params.id;

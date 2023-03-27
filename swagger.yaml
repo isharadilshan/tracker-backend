@@ -1,32 +1,28 @@
-tags:
-- name: users
-  description: users API
-
 paths:
-# [GET] users
-  /users:
+  /expenses:
+    # [GET] expenses
     get:
       tags:
-      - users
-      summary: Find All Users
+      - expenses
+      summary: Find all Expenses
       responses:
         200:
           description: 'OK'
         500:
           description: 'Server Error'
 
-# [POST] users
+    # [POST] expenses
     post:
       tags:
-      - users
-      summary: Add User
+      - expenses
+      summary: Add Expense
       parameters:
       - name: body
         in: body
-        description: user Data
+        description: Expense data
         required: true
         schema:
-          $ref: '#/definitions/users'
+          $ref: '#/definitions/expenses'
       responses:
         201:
           description: 'Created'
@@ -37,16 +33,16 @@ paths:
         500:
           description: 'Server Error'
 
-# [GET] users/id
-  /users/{id}:
+  /expenses/{id}:
+    #[GET] expenses/id
     get:
       tags:
-      - users
-      summary: Find User By Id
+      - expenses
+      summary: Find Expense By Id
       parameters:
       - name: id
         in: path
-        description: User Id
+        description: Expense Id
         required: true
       responses:
         200:
@@ -56,22 +52,22 @@ paths:
         500:
           description: 'Server Error'
 
-# [PUT] users/id
+    #[PUT] expenses/id
     put:
       tags:
-      - users
-      summary: Update User By Id
+      - expenses
+      summary: Update Expense By Id
       parameters:
       - name: id
         in: path
-        description: user Id
+        description: Expense Id
         required: true
       - name: body
         in: body
-        description: user Data
+        description: Expense data
         required: true
         schema:
-          $ref: '#/definitions/users'
+          $ref: '#/definitions/expenses'
       responses:
         200:
           description: 'OK'
@@ -81,16 +77,113 @@ paths:
           description: 'Conflict'
         500:
           description: 'Server Error'
-
-# [DELETE] users/id
+    
+    # [DELETE] expenses/id
     delete:
       tags:
-      - users
-      summary: Delete User By Id
+      - expenses
+      summary: Delete Expense By Id
       parameters:
       - name: id
         in: path
-        description: user Id
+        description: Expense Id
+        required: true
+      responses:
+        200:
+          description: 'OK'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+
+  /todos:
+    # [GET] todos
+    get:
+      tags:
+      - todos
+      summary: Find all ToDos
+      responses:
+        200:
+          description: 'OK'
+        500:
+          description: 'Server Error'
+
+    # [POST] todos
+    post:
+      tags:
+      - todos
+      summary: Add ToDo
+      parameters:
+      - name: body
+        in: body
+        description: ToDo data
+        required: true
+        schema:
+          $ref: '#/definitions/todos'
+      responses:
+        201:
+          description: 'Created'
+        400:
+          description: 'Bad Request'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+
+  /todos/{id}:
+    #[GET] todos/id
+    get:
+      tags:
+      - todos
+      summary: Find ToDo By Id
+      parameters:
+      - name: id
+        in: path
+        description: ToDo Id
+        required: true
+      responses:
+        200:
+          description: 'OK'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+
+    #[PUT] todos/id
+    put:
+      tags:
+      - todos
+      summary: Update ToDo By Id
+      parameters:
+      - name: id
+        in: path
+        description: ToDo Id
+        required: true
+      - name: body
+        in: body
+        description: ToDo data
+        required: true
+        schema: 
+          $ref: '#/definitions/todos'
+      responses:
+        200:
+          description: 'OK'
+        400:
+          description: 'Bad Request'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+    
+    # [DELETE] todos/id
+    delete:
+      tags:
+      - todos
+      summary: Delete ToDo By Id
+      parameters:
+      - name: id
+        in: path
+        description: ToDo Id
         required: true
       responses:
         200:
@@ -102,18 +195,71 @@ paths:
 
 # definitions
 definitions:
-  users:
+  expenses:
     type: object
     required:
-        - email
-        - password
+        - title
+        - description
+        - amount
+        - category
+        - createdDate
+        - updatedDate
+        - latitude
+        - longitude
     properties:
-      email:
+      title:
         type: string
-        description: user Email
-      password:
+        description: expense title
+      description:
         type: string
-        description: user Password
+        description: expense description
+      amount: 
+        type: number
+        description: expense amount
+      category:
+        type: string
+        description: expense category
+      createdDate:
+        type: number
+        description: expense created date
+      updatedDate:
+        type: number
+        description: expense updated date
+      latitude:
+        type: number
+        description: expense created location latitude
+      longitude:
+        type: number
+        description: expense created location longitude
+
+  todos:
+    type: object
+    required:
+        - title
+        - description
+        - status
+        - category
+        - createdDate
+        - updatedDate
+    properties:
+      title:
+        type: string
+        description: todo title
+      description:
+        type: string
+        description: todo description
+      status: 
+        type: string
+        description: todo amount
+      category:
+        type: string
+        description: todo category
+      createdDate:
+        type: number
+        description: todo created date
+      updatedDate:
+        type: number
+        description: todo updated date
 
 schemes:
  - https
