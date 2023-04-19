@@ -4,7 +4,7 @@ import validationMiddleware from '@middlewares/validation.middleware';
 import TodosController from '@/controllers/todos.controller';
 import { CreateTodoDto } from '@/dtos/todos.dto';
 
-//all todo routes
+//all routes
 class TodosRoute implements Routes {
   public path = '/todos';
   public router = Router();
