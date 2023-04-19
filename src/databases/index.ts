@@ -1,4 +1,4 @@
-import { DB_HOST, DB_PORT, DB_DATABASE } from '@config';
+import { DB_DATABASE } from '@config';
 
 //db config object
 export const dbConnection = {
